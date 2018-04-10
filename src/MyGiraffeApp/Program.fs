@@ -1,4 +1,4 @@
-module WebsocketApp.App
+module MyGiraffeApp.App
 
 open System
 open System.IO

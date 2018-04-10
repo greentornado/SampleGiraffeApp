@@ -1,4 +1,4 @@
-src/WebsocketApp/obj/*
-src/WebsocketApp/bin/*
-src/WebsocketApp/.vs
+src/MyGiraffeApp/obj/*
+src/MyGiraffeApp/bin/*
+src/MyGiraffeApp/.vs
 benchmark.sh

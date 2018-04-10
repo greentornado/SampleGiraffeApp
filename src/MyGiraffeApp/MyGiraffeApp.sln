@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "WebsocketApp", "WebsocketApp.fsproj", "{092C2295-8A36-4936-AC81-11262857668D}"
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "MyGiraffeApp", "MyGiraffeApp.fsproj", "{092C2295-8A36-4936-AC81-11262857668D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

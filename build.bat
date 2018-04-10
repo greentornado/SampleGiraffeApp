@@ -1,3 +1,3 @@
-dotnet restore src/WebsocketApp
-dotnet build src/WebsocketApp
+dotnet restore src/MyGiraffeApp
+dotnet build src/MyGiraffeApp
 
