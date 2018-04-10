@@ -131,12 +131,20 @@ let jsonTestFun (txt : string)=
      
     txt
 
+let sortByFun (txt: string) =
+    let persons2 = [{Name="Joe"; ID=120}; {Name="foo"; ID=31}; {Name="bar"; ID=51}]
+    let sorted = List.sortBy (fun p -> p.ID) persons2
+    for p in sorted do printfn "%A" p
+
+    txt
+
 let demoHandler (name : string) =
     let txt = match name with
                 | "test1" -> sprintf "Hello %s, from Giraffe!" name
                 | "test2" -> test2Fun
                 | "test3" -> test3Fun
                 | "jsontest" -> jsonTestFun name
+                | "sortby" -> sortByFun name
                 | _ -> name |> sampleFun
 
     Successful.ok (text txt)
