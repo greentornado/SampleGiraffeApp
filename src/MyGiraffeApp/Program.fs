@@ -12,7 +12,8 @@ open Giraffe
 open Hopac
 open HttpFs.Client
 open Microsoft.AspNetCore.Http
-
+open Newtonsoft.Json
+open Newtonsoft.Json.Serialization
 
 let mainUrl = "http://0.0.0.0:5000"
 let jsonPostsUrl = "http://0.0.0.0:3000/posts"
@@ -25,6 +26,39 @@ type Message =
     {
         Text : string
     }
+
+
+[<CLIMutable>]
+type Person = {
+        ID      : int
+        Name :  string
+ }
+
+[<CLIMutable>]
+type Car =
+    {
+        Name   : string
+        Make   : string
+        Wheels : int
+        Built  : DateTime option
+    }
+
+[<CLIMutable>]
+type ListOfCar = 
+    {
+        Cars : Car list
+        Version : string
+        Length: int
+
+    }
+
+[<CLIMutable>]
+type CarRequest = 
+    {
+        List: ListOfCar
+    }
+
+
 
 // ---------------------------------
 // Views
@@ -57,6 +91,9 @@ module Views =
 // Web app
 // ---------------------------------
 
+let jsonSerializerSetting = JsonSerializerSettings(
+                ContractResolver = CamelCasePropertyNamesContractResolver())
+
 let indexHandler (name : string) =
     let greetings = sprintf "Hello %s, from Giraffe!" name
     let model     = { Text = greetings }
@@ -82,11 +119,24 @@ let applyFn fn txt =
 let test3Fun =
     applyFn printString "ok"
 
+
+let jsonTestFun (txt : string)=
+    let xs = [{ID = 1; Name = "First"} ; { ID = 2; Name = "Second"}]
+
+    let json = JsonConvert.SerializeObject(xs, Formatting.Indented, jsonSerializerSetting)
+    json |> printfn "%s"
+     
+    let xs1 = JsonConvert.DeserializeObject<Person list>(json)
+    xs1 |> List.iter(fun x -> printfn "%i  %s" x.ID x.Name) 
+     
+    txt
+
 let demoHandler (name : string) =
     let txt = match name with
                 | "test1" -> sprintf "Hello %s, from Giraffe!" name
                 | "test2" -> test2Fun
                 | "test3" -> test3Fun
+                | "jsontest" -> jsonTestFun name
                 | _ -> name |> sampleFun
 
     Successful.ok (text txt)
@@ -95,29 +145,7 @@ let demoHandler (name : string) =
 
 
  
-[<CLIMutable>]
-type Car =
-    {
-        Name   : string
-        Make   : string
-        Wheels : int
-        Built  : DateTime option
-    }
 
-[<CLIMutable>]
-type ListOfCar = 
-    {
-        Cars : Car list
-        Version : string
-        Length: int
-
-    }
-
-[<CLIMutable>]
-type CarRequest = 
-    {
-        List: ListOfCar
-    }
 
 
 
