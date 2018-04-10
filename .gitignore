@@ -1,0 +1,4 @@
+src/WebsocketApp/obj/*
+src/WebsocketApp/bin/*
+src/WebsocketApp/.vs
+benchmark.sh
