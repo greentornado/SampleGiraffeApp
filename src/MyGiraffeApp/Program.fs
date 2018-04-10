@@ -36,7 +36,7 @@ module Views =
     let layout (content: XmlNode list) =
         html [] [
             head [] [
-                title []  [ encodedText "WebsocketApp" ]
+                title []  [ encodedText "MyGiraffeApp" ]
                 link [ _rel  "stylesheet"
                        _type "text/css"
                        _href "/main.css" ]
@@ -45,7 +45,7 @@ module Views =
         ]
 
     let partial () =
-        h1 [] [ encodedText "WebsocketApp" ]
+        h1 [] [ encodedText "MyGiraffeApp" ]
 
     let index (model : Message) =
         [
