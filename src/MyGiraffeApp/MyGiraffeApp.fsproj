@@ -7,6 +7,7 @@
     <OutputType>Exe</OutputType>
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+	<PackageId>MyGiraffeApp</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,21 +15,22 @@
     <Content Include="WebRoot\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Calculator.fs" />
     <Compile Include="Program.fs" />
     <None Include="web.config" CopyToOutputDirectory="PreserveNewest" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.4" />
-    <PackageReference Include="Giraffe" Version="1.1.*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.*" />
+  
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.*" />
     <PackageReference Include="Http.fs" Version="5.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.*" />
+    <PackageReference Include="Giraffe" Version="1.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.*" />
   </ItemGroup>
 </Project>

@@ -14,6 +14,8 @@ open HttpFs.Client
 open Microsoft.AspNetCore.Http
 open Newtonsoft.Json
 open Newtonsoft.Json.Serialization
+open MyGiraffeApp.Calculator
+
 
 let mainUrl = "http://0.0.0.0:5000"
 let jsonPostsUrl = "http://0.0.0.0:3000/posts"
@@ -91,8 +93,7 @@ module Views =
 // Web app
 // ---------------------------------
 
-let jsonSerializerSetting = JsonSerializerSettings(
-                ContractResolver = CamelCasePropertyNamesContractResolver())
+let jsonSerializerSetting = JsonSerializerSettings(ContractResolver = CamelCasePropertyNamesContractResolver())
 
 let indexHandler (name : string) =
     let greetings = sprintf "Hello %s, from Giraffe!" name
@@ -138,6 +139,12 @@ let sortByFun (txt: string) =
 
     txt
 
+let addFun (txt : string) =
+    let a = add 9 10
+    printfn "%i" a
+
+    txt
+
 let demoHandler (name : string) =
     let txt = match name with
                 | "test1" -> sprintf "Hello %s, from Giraffe!" name
@@ -145,6 +152,7 @@ let demoHandler (name : string) =
                 | "test3" -> test3Fun
                 | "jsontest" -> jsonTestFun name
                 | "sortby" -> sortByFun name
+                | "add" -> addFun name
                 | _ -> name |> sampleFun
 
     Successful.ok (text txt)
